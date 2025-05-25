@@ -19,6 +19,7 @@ We focus on analyzing trends in:
 - Summary Statistics
 
 ## 📁 Folder Structure
+```
 Environmental-Climate-Analysis/
 ├── data/
 │ └── GSOY_sample.csv
@@ -30,6 +31,7 @@ Environmental-Climate-Analysis/
 ├── Climate_Analysis_Presentation.pptx
 ├── requirements.txt
 └── README.md
+```
 
 
 ## ⚙️ How to Run
@@ -54,8 +56,10 @@ python envo_analysis.py
 
 Visualizations will be saved in the **`visuals/`** folder and summary statistics will be printed in the console.
 
+
 ## 🧠 Summary Statistics Output
 The script displays basic summary statistics for selected features (**`TAVG`**, **`TMAX`**, **`TMIN`**, **`PRCP`**) after normalization.
+
 
 ## 🛠️ Requirements
 See **`requirements.txt`** file or install directly:
@@ -63,10 +67,12 @@ See **`requirements.txt`** file or install directly:
 pip install pandas numpy matplotlib seaborn scikit-learn
 ```
 
+
 ## 📌 Notes
 Ensure the dataset file is named **`GSOY_sample.csv`** and placed inside the **`data/`** folder.
 
 All outputs (charts) are saved in the visuals/ folder automatically.
+
 
 ## 📚 License
 This project is submitted as part of the academic curriculum and is for educational purposes only.
