@@ -1,83 +1,61 @@
-# 1. Import Libraries
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import MinMaxScaler
 
-# 2. Load Dataset
-df = pd.read_csv("GSOY_sample.csv")  # Replace with your dataset path
-print("Initial data preview:")
-print(df.head())
+# Load Dataset
+df = pd.read_csv('data/GSOY_sample.csv')
 
-# 3. Data Cleaning
-print("\nRemoving duplicates if any...")
-df.drop_duplicates(inplace=True)
+# Convert DATE column to datetime
+df['DATE'] = pd.to_datetime(df['DATE'], errors='coerce')
+df.dropna(subset=['DATE'], inplace=True)
 
-# Convert 'DATE' to datetime (auto-detect format)
-df['DATE'] = pd.to_datetime(df['DATE'])
+# Select useful features
+features = ['DATE', 'TAVG', 'TMAX', 'TMIN', 'PRCP']
+df = df[features]
 
-# Extract year as integer column for easier plotting or grouping
-df['YEAR'] = df['DATE'].dt.year
+# Handle missing values
+df.fillna(df.mean(numeric_only=True), inplace=True)
 
-# Check data types and info
-print("\nData info:")
-print(df.info())
-
-# 4. Handle Missing Values
-print("\nMissing values before handling:")
-print(df.isnull().sum())
-
-# Fill missing TAVG with mean
-df['TAVG'].fillna(df['TAVG'].mean(), inplace=True)
-
-# Forward fill missing PRCP values
-df['PRCP'].fillna(method='ffill', inplace=True)
-
-print("\nMissing values after handling:")
-print(df.isnull().sum())
-
-# 5. Feature Selection & Correlation
-selected_features = ['TAVG', 'TMAX', 'TMIN', 'PRCP']
-corr = df[selected_features].corr()
-
-# Plot correlation heatmap
-plt.figure(figsize=(6,4))
-sns.heatmap(corr, annot=True, cmap='coolwarm')
-plt.title("Feature Correlation Heatmap")
-plt.show()
-
-# 6. Data Transformation - Normalize TAVG and PRCP
+# Normalize numeric data
 scaler = MinMaxScaler()
-df[['TAVG_norm', 'PRCP_norm']] = scaler.fit_transform(df[['TAVG', 'PRCP']])
+df[['TAVG', 'TMAX', 'TMIN', 'PRCP']] = scaler.fit_transform(df[['TAVG', 'TMAX', 'TMIN', 'PRCP']])
 
-print("\nData sample after normalization:")
-print(df[['DATE', 'YEAR', 'TAVG', 'TAVG_norm', 'PRCP', 'PRCP_norm']].head())
+# Correlation heatmap
+plt.figure(figsize=(8,6))
+sns.heatmap(df[['TAVG', 'TMAX', 'TMIN', 'PRCP']].corr(), annot=True, cmap='coolwarm')
+plt.title("Correlation Heatmap")
+plt.tight_layout()
+plt.savefig("visuals/correlation_heatmap.png")
+plt.close()
 
-# 7. Initial Visualizations
+# Temperature trend
+df['Year'] = df['DATE'].dt.year
+temp_by_year = df.groupby('Year')['TAVG'].mean()
 
-# Average Temperature Over Years
 plt.figure(figsize=(10,5))
-plt.plot(df['YEAR'], df['TAVG_norm'], marker='o', linestyle='-')
-plt.title("Normalized Average Temperature Over Years")
+temp_by_year.plot()
+plt.title("Average Temperature Trend")
 plt.xlabel("Year")
-plt.ylabel("Normalized Temperature")
+plt.ylabel("Normalized TAVG")
 plt.grid(True)
-plt.show()
+plt.tight_layout()
+plt.savefig("visuals/temperature_trend.png")
+plt.close()
 
-# Annual Precipitation (normalized)
+# Precipitation trend
+prcp_by_year = df.groupby('Year')['PRCP'].mean()
+
 plt.figure(figsize=(10,5))
-plt.bar(df['YEAR'], df['PRCP_norm'], color='skyblue')
-plt.title("Normalized Annual Precipitation Over Years")
+prcp_by_year.plot(kind='bar', color='skyblue')
+plt.title("Average Precipitation Trend")
 plt.xlabel("Year")
-plt.ylabel("Normalized Precipitation")
-plt.show()
+plt.ylabel("Normalized PRCP")
+plt.tight_layout()
+plt.savefig("visuals/precipitation_trend.png")
+plt.close()
 
-# 8. Summary Statistics
-print("\nSummary Statistics:")
-print(df[selected_features].describe())
-
-# 9. Save processed data (optional)
-df.to_csv("GSOY_processed.csv", index=False)
-
-print("\nPreprocessing and initial analysis completed.")
+# Summary statistics
+print("Summary Statistics:")
+print(df.describe())
