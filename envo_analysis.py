@@ -77,23 +77,21 @@ plt.tight_layout()
 plt.savefig("visuals/tmax_tmin_range.png")
 plt.close()
 
-# --- INTERACTIVE VISUALIZATIONS --- #
+# --- INTERACTIVE VISUALIZATIONS (PNG ONLY) --- #
 
-# Line chart for TAVG
+# Line chart for TAVG (save as PNG only)
 fig_temp = px.line(df, x='DATE', y='TAVG', title='Interactive Average Temperature Over Time')
-fig_temp.write_html("visuals/interactive_temp_trend.html")
-fig_temp.write_image("visuals/interactive_temp_trend.png")  # Saves as PNG
+fig_temp.write_image("visuals/interactive_temp_trend.png")
 
-# Scatter plot of TAVG vs PRCP
+# Scatter plot of TAVG vs PRCP (save as PNG only)
 fig_scatter = px.scatter(
     df, x='TAVG', y='PRCP', title='TAVG vs PRCP Scatter Plot',
     labels={'TAVG': 'Normalized Avg Temp', 'PRCP': 'Normalized Precipitation'},
     color='Year', hover_data=['DATE']
 )
-fig_scatter.write_html("visuals/scatter_temp_vs_prcp.html")
-fig_scatter.write_image("visuals/scatter_temp_vs_prcp.png")  # Saves as PNG
+fig_scatter.write_image("visuals/scatter_temp_vs_prcp.png")
 
-# --- SUMMARY --- #
+# --- SUMMARY ---
 
 print("\nSummary Statistics (Normalized Values):\n")
 print(df.describe())
