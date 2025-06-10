@@ -28,10 +28,20 @@ We conducted:
 - Applied normalization using `MinMaxScaler`
 
 ### 📊 Data Visualization & Interpretation (Review 2)
-- Correlation heatmap between climate variables
-- Year-wise trend analysis of:
-  - 🌡️ Average Temperature (`TAVG`)
-  - 🌧️ Precipitation (`PRCP`)
+This project generates six PNG charts to explore climate data
+- **Correlation heatmap:**  
+  Shows relationships between temperature and precipitation variables.
+- **Trend charts:**  
+  - **🌡️ Average Temperature (`TAVG`):** Yearly trends of average temperature.
+  - **🌧️ Precipitation (`PRCP`):** Yearly trends of precipitation.
+- **Temperature range chart:**  
+  Visualizes the difference between maximum and minimum temperatures over time.
+- **Interactive-style charts (as PNG):**  
+  - Line chart of temperature over time.
+  - Scatter plot of temperature vs. precipitation.
+
+These visualizations use Seaborn and Plotly Express to highlight trends and relationships, providing clear insights through visual storytelling.
+
 - Interpretations based on visual storytelling
 
 ---
@@ -40,7 +50,10 @@ We conducted:
 All visualizations are automatically saved to the `visuals/` folder:
 - `correlation_heatmap.png`  
 - `temperature_trend.png`  
-- `precipitation_trend.png`  
+- `precipitation_trend.png`
+- `interactive_temp_trend.png`
+- `scatter_temp_vs_prcp.png`
+- `tmax_tmin_range.png`
 
 ## 📁 Folder Structure
 ```
@@ -101,7 +114,7 @@ The script displays basic summary statistics for selected features (**`TAVG`**, 
 ## 🛠️ Requirements
 See **`requirements.txt`** file or install directly:
 ```
-pip install pandas numpy matplotlib seaborn scikit-learn
+pip install pandas==2.2.3 numpy==1.26.4 matplotlib==3.10.3 seaborn==0.13.2 scikit-learn==1.6.1 plotly==6.0.1 kaleido==0.2.1
 ```
 
 
