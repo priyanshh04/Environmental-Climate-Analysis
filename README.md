@@ -53,7 +53,9 @@ Environmental-Climate-Analysis/
 │   ├── precipitation_trend.png
 │   ├── tmax_tmin_range.png
 │   ├── interactive_temp_trend.html
-│   └── scatter_temp_vs_prcp.html
+│   ├── interactive_temp_trend.png
+│   ├── scatter_temp_vs_prcp.html
+│   └── scatter_temp_vs_prcp.png
 ├── envo_analysis.py
 ├── Climate_Analysis_Presentation.pptx
 ├── requirements.txt
