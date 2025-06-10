@@ -3,6 +3,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import MinMaxScaler
+import os
+
+# Create visuals directory if it doesn't exist
+os.makedirs("visuals", exist_ok=True)
 
 # Load Dataset
 df = pd.read_csv('data/GSOY_sample.csv')
@@ -23,7 +27,7 @@ scaler = MinMaxScaler()
 df[['TAVG', 'TMAX', 'TMIN', 'PRCP']] = scaler.fit_transform(df[['TAVG', 'TMAX', 'TMIN', 'PRCP']])
 
 # Correlation heatmap
-plt.figure(figsize=(8,6))
+plt.figure(figsize=(8, 6))
 sns.heatmap(df[['TAVG', 'TMAX', 'TMIN', 'PRCP']].corr(), annot=True, cmap='coolwarm')
 plt.title("Correlation Heatmap")
 plt.tight_layout()
@@ -34,7 +38,7 @@ plt.close()
 df['Year'] = df['DATE'].dt.year
 temp_by_year = df.groupby('Year')['TAVG'].mean()
 
-plt.figure(figsize=(10,5))
+plt.figure(figsize=(10, 5))
 temp_by_year.plot()
 plt.title("Average Temperature Trend")
 plt.xlabel("Year")
@@ -47,7 +51,7 @@ plt.close()
 # Precipitation trend
 prcp_by_year = df.groupby('Year')['PRCP'].mean()
 
-plt.figure(figsize=(10,5))
+plt.figure(figsize=(10, 5))
 prcp_by_year.plot(kind='bar', color='skyblue')
 plt.title("Average Precipitation Trend")
 plt.xlabel("Year")
@@ -57,5 +61,6 @@ plt.savefig("visuals/precipitation_trend.png")
 plt.close()
 
 # Summary statistics
-print("Summary Statistics:")
-print(df.describe())
+summary_stats = df.describe()
+print("Summary Statistics:\n")
+print(summary_stats)
