@@ -82,6 +82,7 @@ plt.close()
 # Line chart for TAVG
 fig_temp = px.line(df, x='DATE', y='TAVG', title='Interactive Average Temperature Over Time')
 fig_temp.write_html("visuals/interactive_temp_trend.html")
+fig_temp.write_image("visuals/interactive_temp_trend.png")  # Saves as PNG
 
 # Scatter plot of TAVG vs PRCP
 fig_scatter = px.scatter(
@@ -90,6 +91,7 @@ fig_scatter = px.scatter(
     color='Year', hover_data=['DATE']
 )
 fig_scatter.write_html("visuals/scatter_temp_vs_prcp.html")
+fig_scatter.write_image("visuals/scatter_temp_vs_prcp.png")  # Saves as PNG
 
 # --- SUMMARY --- #
 
