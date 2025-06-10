@@ -46,15 +46,15 @@ All visualizations are automatically saved to the `visuals/` folder:
 ```
 Environmental-Climate-Analysis/
 ├── data/
-│ └── GSOY_sample.csv
+│   └── GSOY_sample.csv
 ├── visuals/
-│ ├── correlation_heatmap.png
-│ ├── temperature_trend.png
-│ └── precipitation_trend.png
+│   ├── correlation_heatmap.png
+│   ├── temperature_trend.png
+│   ├── precipitation_trend.png
+│   ├── tmax_tmin_range.png
+│   ├── interactive_temp_trend.html
+│   ├── scatter_temp_vs_prcp.html
 ├── envo_analysis.py
-├── summary_statistics.csv
-├── Climate_Analysis_Presentation.pptx
-├── requirements.txt
 └── README.md
 ```
 
