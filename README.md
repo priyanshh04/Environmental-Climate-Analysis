@@ -121,7 +121,7 @@ pip install pandas==2.2.3 numpy==1.26.4 matplotlib==3.10.3 seaborn==0.13.2 sciki
 ## 📌 Notes
 Ensure the dataset file is named **`GSOY_sample.csv`** and placed inside the **`data/`** folder.
 
-All outputs (charts) are saved in the visuals/ folder automatically.
+All outputs (charts) are saved in the **`visuals/`** folder automatically.
 
 
 ## 📚 License
