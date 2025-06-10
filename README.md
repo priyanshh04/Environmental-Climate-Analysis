@@ -55,6 +55,8 @@ Environmental-Climate-Analysis/
 │   ├── interactive_temp_trend.html
 │   └── scatter_temp_vs_prcp.html
 ├── envo_analysis.py
+├── Climate_Analysis_Presentation.pptx
+├── requirements.txt
 └── README.md
 ```
 
