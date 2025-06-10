@@ -11,12 +11,36 @@ We focus on analyzing trends in:
 - Average Temperature (TAVG)
 - Precipitation (PRCP)
 
+We conducted:
+- ✅ **Data Preprocessing & Cleaning**  
+- ✅ **Feature Selection & Transformation**  
+- ✅ **Visualization & Trend Analysis**  
+- ✅ **Interpretation of Climatic Insights**
+
+---
+
 ## 🧹 Tasks Performed
-- Data Cleaning and Handling Missing Values
-- Feature Selection and Normalization
-- Trend Visualization (Line & Bar Charts)
-- Correlation Analysis
-- Summary Statistics
+
+### 📁 Data Preprocessing (Review 1)
+- Removed or handled missing values
+- Converted date columns to datetime format
+- Selected key climate features: `TAVG`, `TMAX`, `TMIN`, `PRCP`
+- Applied normalization using `MinMaxScaler`
+
+### 📊 Data Visualization & Interpretation (Review 2)
+- Correlation heatmap between climate variables
+- Year-wise trend analysis of:
+  - 🌡️ Average Temperature (`TAVG`)
+  - 🌧️ Precipitation (`PRCP`)
+- Interpretations based on visual storytelling
+
+---
+
+## 📈 Visual Outputs
+All visualizations are automatically saved to the `visuals/` folder:
+- `correlation_heatmap.png`  
+- `temperature_trend.png`  
+- `precipitation_trend.png`  
 
 ## 📁 Folder Structure
 ```
@@ -28,6 +52,7 @@ Environmental-Climate-Analysis/
 │ ├── temperature_trend.png
 │ └── precipitation_trend.png
 ├── envo_analysis.py
+├── summary_statistics.csv
 ├── Climate_Analysis_Presentation.pptx
 ├── requirements.txt
 └── README.md
@@ -59,6 +84,16 @@ Visualizations will be saved in the **`visuals/`** folder and summary statistics
 
 ## 🧠 Summary Statistics Output
 The script displays basic summary statistics for selected features (**`TAVG`**, **`TMAX`**, **`TMIN`**, **`PRCP`**) after normalization.
+
+
+## 💡 Insights & Storytelling
+📉 Temperature Trends: Line graph reveals long-term shifts in annual average temperature.
+
+🌧️ Precipitation Patterns: Bar chart shows yearly variation in rainfall patterns.
+
+🔗 Variable Relationships: Correlation heatmap shows how closely different climate metrics are related.
+
+
 
 
 ## 🛠️ Requirements
