@@ -1,10 +1,5 @@
 # 🌍 Environmental & Climate Data Analysis
 
-## 👥 Team Members
-- Sarthak Goswami  
-- Priyansh Gangwar  
-- Krishna Garg
-
 ## 📌 Overview
 This project explores historical climate patterns using a sample dataset from Global Surface Summary of the Year (GSOY).  
 We focus on analyzing trends in:
